@@ -1,4 +1,3 @@
-
 <template>
     <div 
         id="SideNavMain" 
@@ -9,13 +8,14 @@
             <NuxtLink to="/">
                 <MenuItem iconString="Clips" colorString="#F02C56" sizeString="30"/>
             </NuxtLink>
-            <MenuItem iconString="Following" colorString="#000000" sizeString="27"/>
-            <MenuItem iconString="TRENDING Clips" colorString="#000000" sizeString="27"/>
+            <MenuItem iconString="Following" colorString="#0000FF" sizeString="27"/> <!-- Blue Text -->
+            <MenuItem iconString="TRENDING Clips" colorString="#FFD700" sizeString="27"/> <!-- Yellow Text -->
 
             <div class="border-b lg:ml-2 mt-2" />
 
+            <!-- Replace "Suggested accounts" with "Suggested content" -->
             <div class="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">
-                Suggested accounts
+                Suggested content
             </div>
 
             <div class="lg:hidden block pt-3" />
