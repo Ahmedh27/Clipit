@@ -1,0 +1,1 @@
+export { default } from "file:///C:/Users/PC%20User/Clipit/Clipit-frontend/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
