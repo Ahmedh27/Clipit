@@ -1,61 +1,49 @@
+// users.js
+
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
-router.post('/', async (req, res) => {
-    const { username, email, password } = req.body;
+require('dotenv').config(); 
+
+const multer = require('multer');
+const { v2: cloudinary } = require('cloudinary');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+// Cloudinary configuration
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// Configure Multer to use Cloudinary
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'uploads', 
+        allowed_formats: ['jpg', 'jpeg', 'png', 'gif'], 
+    },
+});
+
+const upload = multer({ storage: storage });
+
+// POST route for file upload
+router.post('/upload', upload.single('file'), async (req, res, next) => {
     try {
-      const result = await db.query(
-        'INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *',
-        [username, email, password]
-      );
-      res.status(201).json(result.rows[0]);
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        res.json({
+            message: 'File uploaded successfully',
+            file: req.file,
+        });
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to create user' });
+        next(err); 
     }
-  });
-  router.get('/', async (req, res) => {
-    try {
-      const result = await db.query('SELECT * FROM users');
-      res.status(200).json(result.rows);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to fetch users' });
-    }
-  });
-  router.get('/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-      const result = await db.query('SELECT * FROM users WHERE user_id = $1', [id]);
-      res.status(200).json(result.rows[0]);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to fetch user' });
-    }
-  });
-  router.put('/:id', async (req, res) => {
-    const { id } = req.params;
-    const { username, email } = req.body;
-    try {
-      const result = await db.query(
-        'UPDATE users SET username = $1, email = $2 WHERE user_id = $3 RETURNING *',
-        [username, email, id]
-      );
-      res.status(200).json(result.rows[0]);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to update user' });
-    }
-  });
-  router.delete('/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-      await db.query('DELETE FROM users WHERE user_id = $1', [id]);
-      res.status(204).send();
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to delete user' });
-    }
-  });
-  
-  module.exports = router;
+});
+
+// Test route to verify that the router is working
+router.get('/test', (req, res) => {
+    res.json({ message: 'Test route is working' });
+});
+
+module.exports = router;
