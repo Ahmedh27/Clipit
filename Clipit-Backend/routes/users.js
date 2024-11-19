@@ -15,7 +15,6 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Configure Multer to use Cloudinary
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
@@ -41,7 +40,7 @@ router.post('/upload', upload.single('file'), async (req, res, next) => {
     }
 });
 
-// Test route to verify that the router is working
+// Test route to verify that the router is working after errors
 router.get('/test', (req, res) => {
     res.json({ message: 'Test route is working' });
 });
