@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "C:/Users/PC User/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.js": {
+  "/Users/kennethromero/Desktop/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "C:/Users/PC User/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.js"
+    "file": "/Users/kennethromero/Desktop/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.js"
   }
 }

@@ -1,1 +1,1 @@
-export { default } from "file:///C:/Users/PC%20User/Clipit/Clipit-frontend/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///Users/kennethromero/Desktop/Clipit/Clipit-frontend/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
