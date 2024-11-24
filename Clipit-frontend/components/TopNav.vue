@@ -9,7 +9,7 @@
         >
             <div :class="route.fullPath === '/' ? 'w-[80%]' : 'lg:w-[20%] w-[70%]'">
                 <NuxtLink to="/">
-                    <img width="115" src="~/assets/images/Clipitimage.png">
+                    <img width="115" src="~/assets/images/tiktok-logo.png">
                 </NuxtLink>
             </div>
 
