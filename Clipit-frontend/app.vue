@@ -1,8 +1,8 @@
 <template>
-  <NuxtPage />
+    <NuxtPage />
 
-  <AuthOverlay v-if="isLoginOpen" />
-  <EditProfileOverlay v-if="isEditProfileOpen" />
+    <AuthOverlay v-if="isLoginOpen" />
+    <EditProfileOverlay v-if="isEditProfileOpen" />
 </template>
 
 <script setup>
@@ -11,21 +11,21 @@ const { $userStore, $generalStore } = useNuxtApp()
 const { isLoginOpen, isEditProfileOpen } = storeToRefs($generalStore)
 
 onMounted(async () => {
-  $generalStore.bodySwitch(false) 
-  isLoginOpen.value = false
-  isEditProfileOpen.value = false
+    $generalStore.bodySwitch(false) 
+    isLoginOpen.value = false
+    isEditProfileOpen.value = false
 
-  try {
-      await $generalStore.hasSessionExpired()
-      await $generalStore.getRandomUsers('suggested')
-      await $generalStore.getRandomUsers('following')
+    try {
+        await $generalStore.hasSessionExpired()
+        await $generalStore.getRandomUsers('suggested')
+        await $generalStore.getRandomUsers('following')
 
-      if ($userStore.id) {
-          $userStore.getUser()
-      }
-  } catch (error) {
-      console.log(error)
-  }
+        if ($userStore.id) {
+            $userStore.getUser()
+        }
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 watch(() => isLoginOpen.value, (val) => $generalStore.bodySwitch(val) )

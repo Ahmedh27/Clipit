@@ -1,18 +1,15 @@
 {
   "@vite/client": {
-    "prefetch": true,
     "isEntry": true,
     "file": "@vite/client",
     "css": [],
     "module": true,
     "resourceType": "script"
   },
-  "/Users/kennethromero/Desktop/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.js": {
+  "/Users/ahmed/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
-    "prefetch": true,
-    "preload": true,
     "isEntry": true,
-    "file": "/Users/kennethromero/Desktop/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.js"
+    "file": "/Users/ahmed/Clipit/Clipit-frontend/node_modules/nuxt/dist/app/entry.mjs"
   }
 }

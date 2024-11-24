@@ -1,4 +1,3 @@
-
 <template>
     <div class="text-center text-[28px] mb-4 font-bold">Sign up</div>
 

@@ -1,9 +1,9 @@
 {
-  "_hash": "sYaTChr3dZ",
+  "_hash": "GDN3uetd08",
   "project": {
-    "rootDir": "/Users/kennethromero/Desktop/Clipit/Clipit-frontend"
+    "rootDir": "/Users/ahmed/Clipit/Clipit-frontend"
   },
   "versions": {
-    "nuxt": "3.14.159"
+    "nuxt": "3.2.3"
   }
 }
