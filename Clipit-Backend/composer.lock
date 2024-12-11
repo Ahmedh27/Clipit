@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "7225cfa180f1dc6afae33077ada7f8e1",
     "packages": [
         {
@@ -159,6 +160,11 @@
             "time": "2024-12-05T01:17:41+00:00"
         },
         {
+=======
+    "content-hash": "895a563f16119134feadab02f7797c6e",
+    "packages": [
+        {
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             "name": "brick/math",
             "version": "0.10.2",
             "source": {
@@ -848,6 +854,7 @@
         },
         {
             "name": "guzzlehttp/promises",
+<<<<<<< HEAD
             "version": "1.5.3",
             "source": {
                 "type": "git",
@@ -858,6 +865,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/promises/zipball/67ab6e18aaa14d753cc148911d273f6e6cb6721e",
                 "reference": "67ab6e18aaa14d753cc148911d273f6e6cb6721e",
+=======
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "b94b2807d85443f9719887892882d0329d1e2598"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/b94b2807d85443f9719887892882d0329d1e2598",
+                "reference": "b94b2807d85443f9719887892882d0329d1e2598",
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
                 "shasum": ""
             },
             "require": {
@@ -867,6 +886,14 @@
                 "symfony/phpunit-bridge": "^4.4 || ^5.1"
             },
             "type": "library",
+<<<<<<< HEAD
+=======
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -907,7 +934,11 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/guzzle/promises/tree/1.5.3"
+=======
+                "source": "https://github.com/guzzle/promises/tree/1.5.2"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "funding": [
                 {
@@ -923,6 +954,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2023-05-21T12:31:43+00:00"
         },
         {
@@ -937,12 +969,32 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/psr7/zipball/a70f5c95fb43bc83f07c9c948baa0dc1829bf201",
                 "reference": "a70f5c95fb43bc83f07c9c948baa0dc1829bf201",
+=======
+            "time": "2022-08-28T14:55:35+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "2.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "67c26b443f348a51926030c83481b85718457d3d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/67c26b443f348a51926030c83481b85718457d3d",
+                "reference": "67c26b443f348a51926030c83481b85718457d3d",
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-factory": "^1.0",
+<<<<<<< HEAD
                 "psr/http-message": "^1.1 || ^2.0",
+=======
+                "psr/http-message": "^1.0",
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
                 "ralouphie/getallheaders": "^3.0"
             },
             "provide": {
@@ -950,9 +1002,15 @@
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
+<<<<<<< HEAD
                 "bamarni/composer-bin-plugin": "^1.8.2",
                 "http-interop/http-factory-tests": "0.9.0",
                 "phpunit/phpunit": "^8.5.39 || ^9.6.20"
+=======
+                "bamarni/composer-bin-plugin": "^1.8.1",
+                "http-interop/http-factory-tests": "^0.9",
+                "phpunit/phpunit": "^8.5.29 || ^9.5.23"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
@@ -962,6 +1020,12 @@
                 "bamarni-bin": {
                     "bin-links": true,
                     "forward-command": false
+<<<<<<< HEAD
+=======
+                },
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
                 }
             },
             "autoload": {
@@ -1023,7 +1087,11 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/guzzle/psr7/tree/2.7.0"
+=======
+                "source": "https://github.com/guzzle/psr7/tree/2.4.3"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "funding": [
                 {
@@ -1039,7 +1107,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-07-18T11:15:46+00:00"
+=======
+            "time": "2022-10-26T14:07:24+00:00"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
         },
         {
             "name": "guzzlehttp/uri-template",
@@ -1882,6 +1954,7 @@
             "time": "2023-02-18T15:32:41+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "league/flysystem-aws-s3-v3",
             "version": "3.23.1",
             "source": {
@@ -1948,6 +2021,8 @@
             "time": "2024-01-26T18:25:23+00:00"
         },
         {
+=======
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             "name": "league/mime-type-detection",
             "version": "1.11.0",
             "source": {
@@ -2105,6 +2180,7 @@
             "time": "2023-02-06T13:46:10+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "mtdowling/jmespath.php",
             "version": "2.8.0",
             "source": {
@@ -2171,6 +2247,8 @@
             "time": "2024-09-04T18:46:31+00:00"
         },
         {
+=======
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             "name": "nesbot/carbon",
             "version": "2.66.0",
             "source": {
@@ -2795,6 +2873,7 @@
         },
         {
             "name": "psr/http-factory",
+<<<<<<< HEAD
             "version": "1.1.0",
             "source": {
                 "type": "git",
@@ -2810,6 +2889,23 @@
             "require": {
                 "php": ">=7.1",
                 "psr/http-message": "^1.0 || ^2.0"
+=======
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-factory.git",
+                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "psr/http-message": "^1.0"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "type": "library",
             "extra": {
@@ -2829,10 +2925,17 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
+<<<<<<< HEAD
                     "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
+=======
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for PSR-7 HTTP message factories",
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             "keywords": [
                 "factory",
                 "http",
@@ -2844,6 +2947,7 @@
                 "response"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/php-fig/http-factory"
             },
             "time": "2024-04-15T12:06:14+00:00"
@@ -2864,11 +2968,37 @@
             },
             "require": {
                 "php": "^7.2 || ^8.0"
+=======
+                "source": "https://github.com/php-fig/http-factory/tree/master"
+            },
+            "time": "2019-04-30T12:38:16+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "1.1.x-dev"
+=======
+                    "dev-master": "1.0.x-dev"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
                 }
             },
             "autoload": {
@@ -2897,9 +3027,15 @@
                 "response"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/php-fig/http-message/tree/1.1"
             },
             "time": "2023-04-04T09:50:52+00:00"
+=======
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
+            "time": "2016-08-06T14:39:51+00:00"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
         },
         {
             "name": "psr/log",
@@ -4515,6 +4651,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
+<<<<<<< HEAD
             "version": "v1.31.0",
             "source": {
                 "type": "git",
@@ -4529,6 +4666,22 @@
             },
             "require": {
                 "php": ">=7.2"
+=======
+            "version": "v1.27.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "provide": {
                 "ext-mbstring": "*"
@@ -4538,6 +4691,12 @@
             },
             "type": "library",
             "extra": {
+<<<<<<< HEAD
+=======
+                "branch-alias": {
+                    "dev-main": "1.27-dev"
+                },
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -4575,7 +4734,11 @@
                 "shim"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.31.0"
+=======
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
             },
             "funding": [
                 {
@@ -4591,7 +4754,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-09-09T11:45:10+00:00"
+=======
+            "time": "2022-11-03T14:55:06+00:00"
+>>>>>>> dcf99d31e15de8e90478cacb314e87130ef0df8a
         },
         {
             "name": "symfony/polyfill-php72",
