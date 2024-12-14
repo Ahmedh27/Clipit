@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "apt-get update && apt-get install -y pkg-config libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev"
-
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.65",
     "@types/node": "20.5.1",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
@@ -31,8 +31,6 @@
   },
   "devDependencies": {
     "@types/debounce": "^1.2.4",
-    "canvas": "^2.11.2",
     "raw-loader": "^4.0.2"
   }
-
 }
