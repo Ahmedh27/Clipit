@@ -7,10 +7,10 @@ export interface UserContextTypes {
 }
 
 export interface User {
-    id: string,
-    name: string,
-    bio: string,
-    image: string,
+    id: string;
+    name: string;
+    bio: string;
+    image: string;
 }
 
 export interface Profile {
@@ -27,6 +27,28 @@ export interface RandomUsers {
     image: string;
 }
 
+export interface Follower {
+    id: string;
+    follower_id: string;
+    profile: {
+        user_id: string;
+        name: string;
+        image: string;
+        bio: string;
+    };
+}
+
+export interface Following {
+    id: string;
+    following_id: string;
+    profile: {
+        user_id: string;
+        name: string;
+        image: string;
+        bio: string;
+    };
+}
+
 export interface CropperDimensions {
     height?: number | null;
     width?: number | null;
@@ -38,7 +60,7 @@ export interface Like {
     id: string;
     user_id: string;
     post_id: string;
-  }
+}
 
 export interface Post {
     id: string;
@@ -58,7 +80,7 @@ export interface PostWithProfile {
         user_id: string;
         name: string;
         image: string;
-    }
+    };
 }
 
 export interface CommentWithProfile {
@@ -71,7 +93,7 @@ export interface CommentWithProfile {
         user_id: string;
         name: string;
         image: string;
-    }
+    };
 }
 
 export interface Comment {
@@ -97,37 +119,39 @@ export interface UploadError {
 
 // COMPONENT TYPES
 export interface CommentsHeaderCompTypes {
-    params: { userId: string; postId: string; };
-    post: PostWithProfile
+    params: { userId: string; postId: string };
+    post: PostWithProfile;
 }
 
 export interface CommentsCompTypes {
-    params: { userId: string; postId: string; };
+    params: { userId: string; postId: string };
 }
 
 export interface PostPageTypes {
-    params: { userId: string; postId: string; };
+    params: { userId: string; postId: string };
 }
 
 export interface ProfilePageTypes {
-    params: { id: string; };
+    params: { id: string };
+    followers: Follower[];
+    following: Following[];
 }
 
 export interface SingleCommentCompTypes {
-    params: { userId: string; postId: string; };
-    comment: CommentWithProfile
+    params: { userId: string; postId: string };
+    comment: CommentWithProfile;
 }
 
 export interface PostUserCompTypes {
-    post: Post
+    post: Post;
 }
 
 export interface PostMainCompTypes {
-    post: PostWithProfile
+    post: PostWithProfile;
 }
 
 export interface PostMainLikesCompTypes {
-    post: PostWithProfile
+    post: PostWithProfile;
 }
 
 export interface TextInputCompTypes {
@@ -138,17 +162,24 @@ export interface TextInputCompTypes {
     error: string;
 }
 
-
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 
 // LAYOUT INCLUDE TYPES
 export interface MenuItemTypes {
-    iconString: string,
-    colorString: string,
-    sizeString: string
+    iconString: string;
+    colorString: string;
+    sizeString: string;
 }
 
 export interface MenuItemFollowCompTypes {
-    user: RandomUsers
+    user: RandomUsers;
+}
+
+export interface FollowersCompTypes {
+    followers: Follower[];
+}
+
+export interface FollowingCompTypes {
+    following: Following[];
 }
