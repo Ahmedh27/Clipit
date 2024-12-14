@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "apt-get update && apt-get install -y pkg-config libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev"
-  },
+    "lint": "next lint"  },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.65",
     "@types/node": "20.5.1",
