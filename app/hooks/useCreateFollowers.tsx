@@ -9,6 +9,7 @@ const useCreateFollowers = async (followerId: string, followingId: string): Prom
             {
                 follower_id: followerId,
                 following_id: followingId,
+                created_at: new Date().toISOString(),
             }
         );
     } catch (error) {
