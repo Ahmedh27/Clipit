@@ -39,8 +39,8 @@ export default function PostMain({ post }: PostMainCompTypes) {
                             </span>
                         </Link>
 
-                        <button className="border text-[15px] px-[21px] py-0.5 border-[#F02C56] text-[#F02C56] hover:bg-[#ffeef2] font-semibold rounded-md">
-                            Follow
+                        <button className="border text-[15px] px-[21px] py-0.5 border-[#06b967] text-[#069ae1] hover:bg-[#04ba68] font-semibold rounded-md">
+                            Subscribe
                         </button>
                     </div>
                     <p className="text-[15px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.text}</p>
@@ -66,7 +66,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                             <img 
                                 className="absolute right-2 bottom-10" 
                                 width="90" 
-                                src="/images/tiktok-logo-white.png"
+                                src="/images/logo.png"
                             />
                         </div>
                         

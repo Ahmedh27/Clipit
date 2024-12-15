@@ -8,7 +8,7 @@ import { AiOutlineClose } from "react-icons/ai"
 import { BiChevronDown, BiChevronUp } from "react-icons/bi"
 import { useRouter } from "next/navigation"
 import ClientOnly from "@/app/components/ClientOnly"
-import { Post, PostPageTypes } from "@/app/types"
+import { Post as PostType, PostPageTypes } from "@/app/types"
 import { usePostStore } from "@/app/stores/post"
 import { useLikeStore } from "@/app/stores/like"
 import { useCommentStore } from "@/app/stores/comment"
@@ -78,7 +78,7 @@ export default function Post({ params }: PostPageTypes) {
                     <img 
                         className="absolute z-20 top-[18px] left-[70px] rounded-full lg:mx-0 mx-auto" 
                         width="45" 
-                        src="/images/tiktok-logo-small.png"
+                        src="/images/logo.png"
                     />
 
                     <ClientOnly>
