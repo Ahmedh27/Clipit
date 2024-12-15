@@ -44,11 +44,11 @@ export default function TopNav() {
 
     return (
         <>
-            <div id="TopNav" className="fixed bg-white z-30 flex items-center w-full border-b h-[60px]">
+            <div id="TopNav" className="fixed bg-white z-30 flex items-center w-full border-b h-[80px]">
                 <div className={`flex items-center justify-between gap-6 w-full px-4 mx-auto ${pathname === '/' ? 'max-w-[1150px]' : ''}`}>
 
                     <Link href="/">
-                        <img className="min-w-[115px] w-[115px]" src="/images/tiktok-logo.png"/>
+                        <img className="min-w-[115px] w-[115px]" src="/images/logo.png"/>
                     </Link>
 
                     <div className="relative hidden md:flex items-center justify-end bg-[#F1F1F2] p-1 rounded-full max-w-[430px] w-full">
@@ -97,7 +97,7 @@ export default function TopNav() {
                                     onClick={() => setIsLoginOpen(true)}
                                     className="flex items-center bg-[#F02C56] text-white border rounded-md px-3 py-[6px]"
                                 >
-                                    <span className="whitespace-nowrap mx-4 font-medium text-[15px]">Log in</span>
+                                    <span className="whitespace-nowrap mx-4 font-medium text-[15px]">Sign in</span>
                                 </button>
                                 <BsThreeDotsVertical color="#161724" size="25"/>
                             </div>
