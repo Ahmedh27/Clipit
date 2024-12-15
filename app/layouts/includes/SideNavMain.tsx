@@ -28,13 +28,13 @@ export default function SideNavMain() {
                 <div className="lg:w-full w-[55px] mx-auto">
                     <Link href="/">
                         <MenuItem 
-                            iconString="For You" 
+                            iconString="Explore" 
                             colorString={pathname == '/' ? '#F02C56' : ''} 
                             sizeString="25"
                         />
                     </Link>
-                    <MenuItem iconString="Following" colorString="#000000" sizeString="25"/>
-                    <MenuItem iconString="LIVE" colorString="#000000" sizeString="25"/>
+                    <MenuItem iconString="Subscriptions" colorString="#000000" sizeString="25"/>
+                    <MenuItem iconString="Broadcast" colorString="#000000" sizeString="25"/>
 
                     <div className="border-b lg:ml-2 mt-2" />
                     <h3 className="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">Suggested accounts</h3>
