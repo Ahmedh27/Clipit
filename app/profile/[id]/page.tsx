@@ -126,9 +126,9 @@ export default function Profile({ params }: { params: { id: string } }) {
                         ) : (
                             <button 
                                 onClick={handleFollowToggle}
-                                className={`flex item-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold ${isFollowing ? 'bg-gray-400' : 'bg-[#F02C56]'}`}
+                                className={`flex item-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold ${isFollowing ? 'bg-gray-400' : 'bg-[#03b869]'}`}
                             >
-                                {isFollowing ? 'Unfollow' : 'Follow'}
+                                {isFollowing ? 'Unsubscribe' : 'Subscribe'}
                             </button>
                         )}
                     </div>
@@ -138,11 +138,11 @@ export default function Profile({ params }: { params: { id: string } }) {
                 <div className="flex items-center pt-4">
                     <div className="mr-4">
                         <span className="font-bold">{following.length}</span>
-                        <span className="text-gray-500 font-light text-[15px] pl-1.5">Following</span>
+                        <span className="text-gray-500 font-light text-[15px] pl-1.5">Subscriptions</span>
                     </div>
                     <div className="mr-4">
                         <span className="font-bold">{followers.length}</span>
-                        <span className="text-gray-500 font-light text-[15px] pl-1.5">Followers</span>
+                        <span className="text-gray-500 font-light text-[15px] pl-1.5">Subscribers</span>
                     </div>
                 </div>
 

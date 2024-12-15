@@ -29,12 +29,12 @@ export default function SideNavMain() {
                     <Link href="/">
                         <MenuItem 
                             iconString="Explore" 
-                            colorString={pathname == '/' ? '#F02C56' : ''} 
+                            colorString={pathname == '/' ? '#03bb68' : ''} 
                             sizeString="25"
                         />
                     </Link>
-                    <MenuItem iconString="Subscriptions" colorString="#000000" sizeString="25"/>
-                    <MenuItem iconString="Broadcast" colorString="#000000" sizeString="25"/>
+                    <MenuItem iconString="Subscriptions" colorString="#049be1" sizeString="25"/>
+                    <MenuItem iconString="Broadcast" colorString="#ff3d41" sizeString="25"/>
 
                     <div className="border-b lg:ml-2 mt-2" />
                     <h3 className="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">Suggested accounts</h3>
@@ -48,7 +48,7 @@ export default function SideNavMain() {
                         </div>
                     </ClientOnly>
 
-                    <button className="lg:block hidden text-[#F02C56] pt-1.5 pl-2 text-[13px]">See all</button>
+                    <button className="lg:block hidden text-[#fd931c] pt-1.5 pl-2 text-[13px]">See all</button>
 
                     {contextUser?.user?.id ? (
                         <div >
@@ -64,16 +64,16 @@ export default function SideNavMain() {
                                 </div>
                             </ClientOnly>
 
-                            <button className="lg:block hidden text-[#F02C56] pt-1.5 pl-2 text-[13px]">See more</button>
+                            <button className="lg:block hidden text-[#fd931c] pt-1.5 pl-2 text-[13px]">See more</button>
                         </div>
                     ) : null}
                     <div className="lg:block hidden border-b lg:ml-2 mt-2" />
 
                     <div className="lg:block hidden text-[11px] text-gray-500">
-                        <p className="pt-4 px-2">About Newsroom TikTok Shop Contact Careers ByteDance</p>
-                        <p className="pt-4 px-2">TikTok for Good Advertise Developers Transparency TikTok Rewards TikTok Browse TikTok Embeds</p>
-                        <p className="pt-4 px-2">Help Safety Terms Privacy Creator Portal Community Guidelines</p>
-                        <p className="pt-4 px-2">© 2023 TikTok</p>
+                        <p className="pt-4 px-2">Discover Clipit: About Us, Newsroom, Shop, Contact, Careers — Powered by CCNY</p>
+                        <p className="pt-4 px-2">"Clipit for Inspiration | Promote Creativity | Empower Developers | Build Trust | Clipit Rewards | Explore Clips | Share Seamlessly with Clipit Embeds</p>
+                        <p className="pt-4 px-2">"Support | Security | Policies | Creator Hub | Community Standards</p>
+                        <p className="pt-4 px-2">© 2024 Clipit</p>
                     </div>
 
                     <div className="pb-14"></div>

@@ -95,9 +95,9 @@ export default function TopNav() {
                             <div className="flex items-center">
                                 <button 
                                     onClick={() => setIsLoginOpen(true)}
-                                    className="flex items-center bg-[#F02C56] text-white border rounded-md px-3 py-[6px]"
+                                    className="flex items-center bg-[#ff3d41] text-white border rounded-md px-3 py-[6px]"
                                 >
-                                    <span className="whitespace-nowrap mx-4 font-medium text-[15px]">Log in</span>
+                                    <span className="whitespace-nowrap mx-4 font-medium text-[15px]">Sign in</span>
                                 </button>
                                 <BsThreeDotsVertical color="#161724" size="25"/>
                             </div>
