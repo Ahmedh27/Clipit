@@ -59,15 +59,21 @@ export default function TopNav() {
 
           {/* Horizontal Menu Items */}
           <div className="flex gap-4">
-          <Link href="/">
-                        <MenuItem 
-                            iconString="Explore" 
-                            colorString={pathname == '/' ? '#03bb68' : ''} 
-                            sizeString="25"
-                        />
-                    </Link>
-            <MenuItem iconString="Subscriptions" colorString="#049be1" sizeString="24" />
-            
+            <Link href="/">
+              <MenuItem 
+                iconString="Explore" 
+                colorString={pathname === '/' ? '#03bb68' : ''} 
+                sizeString="25"
+              />
+            </Link>
+
+            <Link href="/Subscriptions">
+              <MenuItem 
+                iconString="Subscriptions" 
+                colorString={pathname === '/Subscriptions' ? '#049be1' : ''} 
+                sizeString="24" 
+              />
+            </Link>
           </div>
 
           <div className="relative hidden md:flex items-center justify-end bg-[#F1F1F2] p-1 rounded-full max-w-[270px] w-full">
