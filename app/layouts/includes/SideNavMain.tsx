@@ -33,7 +33,11 @@ export default function SideNavMain() {
                             sizeString="25"
                         />
                     </Link>
+                   
+                    <Link href='/Subscriptions'>
                     <MenuItem iconString="Subscriptions" colorString="#049be1" sizeString="25"/>
+                    </Link>
+                    
                     <MenuItem iconString="Broadcast" colorString="#ff3d41" sizeString="25"/>
 
                     <div className="border-b lg:ml-2 mt-2" />
