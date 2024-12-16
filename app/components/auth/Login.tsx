@@ -4,54 +4,65 @@ import { ShowErrorObject } from "@/app/types";
 import { useUser } from "@/app/context/user";
 import { useGeneralStore } from "@/app/stores/general";
 import { BiLoaderCircle } from "react-icons/bi";
+import { AppwriteException } from "appwrite";
 
 export default function Login() {
     let { setIsLoginOpen } = useGeneralStore();
-
-    const contextUser = useUser()
+    const contextUser = useUser();
 
     const [loading, setLoading] = useState<boolean>(false);
     const [email, setEmail] = useState<string | ''>('');
     const [password, setPassword] = useState<string | ''>('');
-    const [error, setError] = useState<ShowErrorObject | null>(null)
+    const [error, setError] = useState<ShowErrorObject | null>(null);
 
     const showError = (type: string) => {
-        if (error && Object.entries(error).length > 0 && error?.type == type) {
-            return error.message
+        if (error && error.type === type) {
+            return error.message;
         }
-        return ''
-    }
+        return '';
+    };
 
     const validate = () => {
-        setError(null)
-        let isError = false
+        setError(null);
+        let isError = false;
 
         if (!email) {
-            setError({ type: 'email', message: 'An Email is required'})
-            isError = true
+            setError({ type: 'email', message: 'An Email is required' });
+            isError = true;
         } else if (!password) {
-            setError({ type: 'password', message: 'A Password is required'})
-            isError = true
+            setError({ type: 'password', message: 'A Password is required' });
+            isError = true;
         }
-        return isError
-    }
+        return isError;
+    };
 
     const login = async () => {
-        let isError = validate()
-        if (isError) return
-        if (!contextUser) return
+        const isError = validate();
+        if (isError) return;
+        if (!contextUser) return;
 
         try {
-            setLoading(true)
-            await contextUser.login(email, password)
-            setLoading(false)
-            setIsLoginOpen(false)
-        } catch (error) {
-            console.log(error)
-            setLoading(false)
-            alert(error)
+            setLoading(true);
+            await contextUser.login(email, password);
+            setLoading(false);
+            setIsLoginOpen(false);
+        } catch (error: any) {
+            console.error(error);
+            setLoading(false);
+
+            if (error instanceof AppwriteException) {
+                if (error.message.includes("Invalid credentials")) {
+                    setError({ type: 'password', message: 'Invalid email or password. Please try again.' });
+                } else if (error.message.includes("Invalid `password` param")) {
+                    setError({ type: 'password', message: 'Password must be between 8 and 256 characters.' });
+                } else {
+                    setError({ type: 'general', message: 'An unexpected error occurred. Please try again.' });
+                }
+            } else {
+                setError({ type: 'general', message: 'An unknown error occurred. Please try again.' });
+            }
         }
-    }
+    };
 
     return (
         <>
@@ -90,7 +101,11 @@ export default function Login() {
                         {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Log in'}
                     </button>
                 </div>
+
+        
             </div>
         </>
+
     )
 }
+
