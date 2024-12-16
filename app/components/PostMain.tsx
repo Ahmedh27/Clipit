@@ -15,7 +15,7 @@ import { useUser } from "@/app/context/user";
 export default function PostMain({ post }: PostMainCompTypes) {
     const contextUser = useUser();
     const currentUserId = contextUser?.user?.id;
-    // Fallback to post.user_id if post.profile?.user_id is not defined
+    
     const profileUserId = post?.profile?.user_id ?? post.user_id;
 
     const [isFollowing, setIsFollowing] = useState<boolean>(false);
