@@ -64,6 +64,20 @@ export default function Login() {
         }
     };
 
+    const loginWithGithub = async () => {
+        if (!contextUser) return;
+        try {
+            setLoading(true);
+            await contextUser.loginWithOAuth("github");
+            setLoading(false);
+            setIsLoginOpen(false);
+        } catch (error) {
+            console.error(error);
+            setLoading(false);
+            setError({ type: 'general', message: 'Failed to login with GitHub. Please try again.' });
+        }
+    };
+
     return (
         <>
             <div>
@@ -102,11 +116,17 @@ export default function Login() {
                     </button>
                 </div>
 
-        
+                {/* GitHub OAuth Login Option */}
+                <div className="px-6 pb-2 mt-4">
+                    <button
+                        disabled={loading}
+                        onClick={loginWithGithub}
+                        className="flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm bg-gray-800"
+                    >
+                        {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Log in with GitHub'}
+                    </button>
+                </div>
             </div>
         </>
-
     )
 }
-
-//test2
