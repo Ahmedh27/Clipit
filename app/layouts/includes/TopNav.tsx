@@ -10,7 +10,7 @@ import { useGeneralStore } from "@/app/stores/general";
 import useCreateBucketUrl from "@/app/hooks/useCreateBucketUrl";
 import { RandomUsers } from "@/app/types";
 import useSearchProfilesByName from "@/app/hooks/useSearchProfilesByName";
-import MenuItem from "./MenuItem"; // Import the MenuItem component
+import MenuItem from "./MenuItem";
 
 export default function TopNav() {
   const userContext = useUser();
@@ -66,13 +66,27 @@ export default function TopNav() {
               />
             </Link>
 
-            <Link href="/Subscriptions">
-              <MenuItem 
-                iconString="Subscriptions" 
-                colorString={pathname === '/Subscriptions' ? '#049be1' : ''} 
-                sizeString="24" 
-              />
-            </Link>
+            {/* Conditional Subscriptions Menu */}
+            {userContext?.user ? (
+              <Link href="/Subscriptions">
+                <MenuItem 
+                  iconString="Subscriptions" 
+                  colorString={pathname === '/Subscriptions' ? '#049be1' : ''} 
+                  sizeString="24" 
+                />
+              </Link>
+            ) : (
+              <button
+                onClick={() => setIsLoginOpen(true)}
+                className="cursor-pointer flex items-center"
+              >
+                <MenuItem 
+                  iconString="Subscriptions" 
+                  colorString="" 
+                  sizeString="24" 
+                />
+              </button>
+            )}
           </div>
 
           <div className="relative hidden md:flex items-center justify-end bg-[#F1F1F2] p-1 rounded-full max-w-[270px] w-full">
