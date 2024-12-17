@@ -1,21 +1,67 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MenuItemFollow from "./MenuItemFollow";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@/app/context/user";
 import ClientOnly from "@/app/components/ClientOnly";
 import { useGeneralStore } from "@/app/stores/general";
+import getFollowing from "@/app/hooks/useGetFollowing";
+import getRandomUsers from "@/app/hooks/useGetRandomUsers";
+
+
+interface RandomUsers {
+  id: string;
+  name: string;
+  image: string; 
+}
 
 export default function SideNavMain() {
-  let { setRandomUsers, randomUsers } = useGeneralStore();
-
+  const { setRandomUsers } = useGeneralStore();
   const contextUser = useUser();
   const pathname = usePathname();
 
-  useEffect(() => {
-    setRandomUsers();
-  }, []);
+  const [followingUsers, setFollowingUsers] = useState<RandomUsers[]>([]);
+  const [suggestedUsers, setSuggestedUsers] = useState<RandomUsers[]>([]);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        if (contextUser?.user?.id) {
+          const followingRaw = (await getFollowing(contextUser.user.id)) ?? [];
+          const random = (await getRandomUsers()) ?? [];
+
+          const followingIds = followingRaw.map((f) => f.profile.user_id);
+
+          const suggested = random
+            .filter((user) => !followingIds.includes(user.id))
+            .map((user) => ({
+              ...user,
+              image: user.image ?? "" 
+            }));
+
+          const followingList: RandomUsers[] = followingRaw.map((f) => ({
+            id: f.profile.user_id,
+            name: f.profile.name,
+            image: f.profile.image ?? "" 
+          }));
+
+          setFollowingUsers(followingList);
+          setSuggestedUsers(suggested);
+        } else {
+          const random = (await getRandomUsers()) ?? [];
+          const suggested = random.map((user) => ({
+            ...user,
+            image: user.image ?? "" 
+          }));
+          setSuggestedUsers(suggested);
+        }
+      } catch (error) {
+        console.error("Error fetching data in SideNavMain:", error);
+      }
+    }
+
+    fetchData();
+  }, [contextUser?.user?.id]);
 
   return (
     <>
@@ -35,7 +81,7 @@ export default function SideNavMain() {
           <div className="lg:hidden block pt-3" />
           <ClientOnly>
             <div className="cursor-pointer">
-              {randomUsers?.map((user, index) => (
+              {suggestedUsers.map((user, index) => (
                 <MenuItemFollow key={index} user={user} />
               ))}
             </div>
@@ -45,7 +91,7 @@ export default function SideNavMain() {
             See all
           </button>
 
-          {contextUser?.user?.id ? (
+          {contextUser?.user?.id && followingUsers.length > 0 && (
             <div>
               <div className="border-b lg:ml-2 mt-2" />
               <h3 className="lg:block hidden text-xs text-gray-600 font-semibold pt-4 pb-2 px-2">
@@ -55,8 +101,8 @@ export default function SideNavMain() {
               <div className="lg:hidden block pt-3" />
               <ClientOnly>
                 <div className="cursor-pointer">
-                  {randomUsers?.map((user, index) => (
-                    <MenuItemFollow key={index} user={user} />
+                  {followingUsers.map((f, index) => (
+                    <MenuItemFollow key={index} user={f} />
                   ))}
                 </div>
               </ClientOnly>
@@ -65,7 +111,7 @@ export default function SideNavMain() {
                 See more
               </button>
             </div>
-          ) : null}
+          )}
 
           <div className="lg:block hidden border-b lg:ml-2 mt-2" />
 
@@ -89,5 +135,3 @@ export default function SideNavMain() {
     </>
   );
 }
-
-//Testing for deployment
