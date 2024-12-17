@@ -22,7 +22,12 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       const promise = (await account.get()) as any;
       const profile = await useGetProfileByUserId(promise?.$id);
 
-      setUser({ id: promise?.$id, name: promise?.name, bio: profile?.bio, image: profile?.image });
+      setUser({ 
+        id: promise?.$id, 
+        name: promise?.name, 
+        bio: profile?.bio, 
+        image: profile?.image 
+      });
     } catch (error) {
       setUser(null);
     }
@@ -53,7 +58,7 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
   };
 
-  // Log in a user
+  // Log in a user (Email & Password)
   const login = async (email: string, password: string) => {
     try {
       await account.createEmailSession(email, password);
@@ -61,6 +66,20 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     } catch (error) {
       console.error("Login Error:", error);
       throw error; // Propagate the error to the calling component
+    }
+  };
+
+  // Log in a user via OAuth (Google or GitHub)
+  const loginWithOAuth = async (provider: 'google' | 'github') => {
+    const successUrl = window.location.origin;        // Redirect here on success
+    const failureUrl = window.location.origin + '/auth/error'; // Redirect here on failure
+
+    try {
+      // This will redirect the user to the OAuth provider's login page
+      account.createOAuth2Session(provider, successUrl, failureUrl);
+    } catch (error) {
+      console.error(`OAuth Login Error with ${provider}:`, error);
+      throw error;
     }
   };
 
@@ -76,7 +95,7 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, register, login, logout, checkUser }}>
+    <UserContext.Provider value={{ user, register, login, logout, checkUser, loginWithOAuth }}>
       {children}
     </UserContext.Provider>
   );
