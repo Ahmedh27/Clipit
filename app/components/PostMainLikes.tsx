@@ -89,7 +89,7 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
     };
 
     const handleShare = () => {
-        const videoUrl = `${window.location.origin}/post/${post?.id}`;
+        const videoUrl = `${window.location.origin}/post/${post?.id}/${post?.id}`;
         navigator.clipboard.writeText(videoUrl).then(() => {
             toast.success("✨ Link copied! Share the awesomeness 🎉", {
                 icon: <span role="img" aria-label="link">🔗</span>,
