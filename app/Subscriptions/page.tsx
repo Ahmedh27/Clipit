@@ -77,15 +77,17 @@ export default function Subscriptions() {
                             <div className="animate-pulse text-neutral-400">Loading...</div>
                         </div>
                     ) : posts.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-                            {posts.map((post) => (
-                                <div 
-                                    key={post.id} 
-                                    className="transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
-                                >
-                                    <PostMain post={post} />
-                                </div>
-                            ))}
+                        <div className="max-h-[80vh] overflow-y-auto">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr place-items-center">
+                                {posts.map((post) => (
+                                    <div 
+                                        key={post.id} 
+                                        className="transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                                    >
+                                        <PostMain post={post} />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     ) : (
                         <div className="text-center py-12 bg-neutral-50 rounded-xl">
