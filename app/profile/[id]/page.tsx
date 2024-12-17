@@ -1,12 +1,11 @@
 "use client"
-//Unfollowing is working
 import PostUser from "@/app/components/profile/PostUser"
 import MainLayout from "@/app/layouts/MainLayout"
 import { BsPencil } from "react-icons/bs"
 import { useEffect, useState, useCallback } from "react"
 import { useUser } from "@/app/context/user"
 import ClientOnly from "@/app/components/ClientOnly"
-import { User, Follower, Following } from "@/app/types"
+import { User, Follower, Following, Post } from "@/app/types"
 import { usePostStore } from "@/app/stores/post"
 import { useProfileStore } from "@/app/stores/profile"
 import { useGeneralStore } from "@/app/stores/general"
@@ -15,6 +14,7 @@ import useCreateFollowers from "@/app/hooks/useCreateFollowers"
 import useDeleteFollower from "@/app/hooks/useDeleteFollower"
 import useGetFollowers from "@/app/hooks/useGetFollowers"
 import useGetFollowing from "@/app/hooks/useGetFollowing"
+import useGetLikedPostsByUserId from "@/app/hooks/useGetLikedPostsByUserId"  // The new hook we created above
 
 export default function Profile({ params }: { params: { id: string } }) {
     const contextUser = useUser()
@@ -29,12 +29,18 @@ export default function Profile({ params }: { params: { id: string } }) {
     const [showFollowers, setShowFollowers] = useState<boolean>(false)
     const [showFollowing, setShowFollowing] = useState<boolean>(false)
 
+    const [likedPosts, setLikedPosts] = useState<Post[]>([]) // State to hold liked posts
+
+    // 'videos' or 'liked'
+    const [selectedTab, setSelectedTab] = useState<"videos" | "liked">("videos")
+
     const currentUserId = contextUser?.user?.id
     const profileUserId = params.id
 
     useEffect(() => {
         if (!profileUserId) return
 
+        // Set current profile and posts
         setCurrentProfile(profileUserId)
         setPostsByUser(profileUserId)
 
@@ -79,6 +85,20 @@ export default function Profile({ params }: { params: { id: string } }) {
             console.error("Error toggling follow:", error)
         }
     }, [currentUserId, profileUserId, isFollowing])
+
+    // Fetch liked posts once the profile is loaded
+    useEffect(() => {
+        const fetchLikedPosts = async () => {
+            if (!profileUserId) return
+            try {
+                const userLikedPosts = await useGetLikedPostsByUserId(profileUserId)
+                setLikedPosts(userLikedPosts)
+            } catch (error) {
+                console.error("Error fetching liked posts:", error)
+            }
+        }
+        fetchLikedPosts()
+    }, [profileUserId])
 
     return (
         <MainLayout>
@@ -191,17 +211,36 @@ export default function Profile({ params }: { params: { id: string } }) {
                     </p>
                 </ClientOnly>
 
+                {/* Tabs for Videos and Liked */}
                 <ul className="w-full flex items-center pt-4 border-b">
-                    <li className="w-60 text-center py-2 text-[17px] font-semibold border-b-2 border-b-black">Videos</li>
-                    <li className="w-60 text-gray-500 text-center py-2 text-[17px] font-semibold">Liked</li>
+                    <li 
+                        className={`w-60 text-center py-2 text-[17px] font-semibold cursor-pointer ${selectedTab === 'videos' ? 'border-b-2 border-b-black' : 'text-gray-500'}`}
+                        onClick={() => setSelectedTab('videos')}
+                    >
+                        Videos
+                    </li>
+                    <li 
+                        className={`w-60 text-center py-2 text-[17px] font-semibold cursor-pointer ${selectedTab === 'liked' ? 'border-b-2 border-b-black' : 'text-gray-500'}`}
+                        onClick={() => setSelectedTab('liked')}
+                    >
+                        Liked
+                    </li>
                 </ul>
 
                 <ClientOnly>
-                    <div className="mt-4 grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
-                        {postsByUser?.map((post, index) => (
-                            <PostUser key={index} post={post} />
-                        ))}
-                    </div>
+                    {selectedTab === "videos" ? (
+                        <div className="mt-4 grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
+                            {postsByUser?.map((post, index) => (
+                                <PostUser key={index} post={post} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="mt-4 grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
+                            {likedPosts?.map((post, index) => (
+                                <PostUser key={index} post={post} />
+                            ))}
+                        </div>
+                    )}
                 </ClientOnly>
 
                 <div className="pb-20" />
