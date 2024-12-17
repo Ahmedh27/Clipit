@@ -11,8 +11,6 @@ import { usePostStore } from "@/app/stores/post"
 import { useProfileStore } from "@/app/stores/profile"
 import { useGeneralStore } from "@/app/stores/general"
 import useCreateBucketUrl from "@/app/hooks/useCreateBucketUrl"
-
-// Importing the follower/following related utilities
 import useCreateFollowers from "@/app/hooks/useCreateFollowers"
 import useDeleteFollower from "@/app/hooks/useDeleteFollower"
 import useGetFollowers from "@/app/hooks/useGetFollowers"
@@ -24,15 +22,16 @@ export default function Profile({ params }: { params: { id: string } }) {
     const { setCurrentProfile, currentProfile } = useProfileStore()
     const { isEditProfileOpen, setIsEditProfileOpen } = useGeneralStore()
 
-    // State for followers and following
     const [followers, setFollowers] = useState<Follower[]>([])
     const [following, setFollowing] = useState<Following[]>([])
     const [isFollowing, setIsFollowing] = useState<boolean>(false)
 
+    const [showFollowers, setShowFollowers] = useState<boolean>(false)
+    const [showFollowing, setShowFollowing] = useState<boolean>(false)
+
     const currentUserId = contextUser?.user?.id
     const profileUserId = params.id
 
-    // Fetch profile, posts, followers, and following data
     useEffect(() => {
         if (!profileUserId) return
 
@@ -54,7 +53,6 @@ export default function Profile({ params }: { params: { id: string } }) {
         fetchData()
     }, [profileUserId, setCurrentProfile, setPostsByUser])
 
-    // Determine if the current user is following this profile
     useEffect(() => {
         if (currentUserId && followers.length > 0) {
             const userIsFollowing = followers.some((follower) => follower.follower_id === currentUserId)
@@ -69,14 +67,11 @@ export default function Profile({ params }: { params: { id: string } }) {
 
         try {
             if (isFollowing) {
-                // Unfollow
                 await useDeleteFollower(currentUserId, profileUserId)
             } else {
-                // Follow
                 await useCreateFollowers(currentUserId, profileUserId)
             }
 
-            // Re-fetch followers to update UI
             const updatedFollowers = await useGetFollowers(profileUserId)
             setFollowers(updatedFollowers)
 
@@ -90,7 +85,6 @@ export default function Profile({ params }: { params: { id: string } }) {
             <div className="pt-[90px] ml-[90px] 2xl:pl-[185px] lg:pl-[160px] lg:pr-0 w-[calc(100%-90px)] pr-3 max-w-[1800px] 2xl:mx-auto">
 
                 <div className="flex w-[calc(100vw-230px)]">
-
                     <ClientOnly>
                         {currentProfile ? (
                             <img 
@@ -132,19 +126,64 @@ export default function Profile({ params }: { params: { id: string } }) {
                             </button>
                         )}
                     </div>
-
                 </div>
 
                 <div className="flex items-center pt-4">
-                    <div className="mr-4">
+                    <div className="mr-4 cursor-pointer" onClick={() => setShowFollowing(true)}>
                         <span className="font-bold">{following.length}</span>
                         <span className="text-gray-500 font-light text-[15px] pl-1.5">Subscriptions</span>
                     </div>
-                    <div className="mr-4">
+                    <div className="mr-4 cursor-pointer" onClick={() => setShowFollowers(true)}>
                         <span className="font-bold">{followers.length}</span>
                         <span className="text-gray-500 font-light text-[15px] pl-1.5">Subscribers</span>
                     </div>
                 </div>
+
+                {showFollowers && (
+                    <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white p-6 rounded-lg w-[400px]">
+                            <h2 className="text-xl font-bold mb-4">Subscribers</h2>
+                            <ul>
+                                {followers.map((follower) => (
+                                    <li key={follower.id} className="flex items-center mb-2">
+                                        <img
+                                            src={useCreateBucketUrl(follower.profile.image)}
+                                            alt={follower.profile.name}
+                                            className="w-8 h-8 rounded-full mr-2"
+                                        />
+                                        <span>{follower.profile.name}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <button onClick={() => setShowFollowers(false)} className="mt-4 text-blue-500 font-semibold">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                )}
+
+                {showFollowing && (
+                    <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white p-6 rounded-lg w-[400px]">
+                            <h2 className="text-xl font-bold mb-4">Subscriptions</h2>
+                            <ul>
+                                {following.map((follow) => (
+                                    <li key={follow.id} className="flex items-center mb-2">
+                                        <img
+                                            src={useCreateBucketUrl(follow.profile.image)}
+                                            alt={follow.profile.name}
+                                            className="w-8 h-8 rounded-full mr-2"
+                                        />
+                                        <span>{follow.profile.name}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <button onClick={() => setShowFollowing(false)} className="mt-4 text-blue-500 font-semibold">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                )}
 
                 <ClientOnly>
                     <p className="pt-4 mr-4 text-gray-500 font-light text-[15px] pl-1.5 max-w-[500px]">
