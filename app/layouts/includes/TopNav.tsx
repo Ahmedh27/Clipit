@@ -3,7 +3,6 @@ import { debounce } from "debounce";
 import { useRouter, usePathname } from "next/navigation";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useUser } from "@/app/context/user";
@@ -130,7 +129,6 @@ export default function TopNav() {
                     Sign in
                   </span>
                 </button>
-                <BsThreeDotsVertical color="#161724" size="25" />
               </div>
             ) : (
               <div className="flex items-center">

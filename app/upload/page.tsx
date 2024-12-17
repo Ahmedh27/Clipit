@@ -169,7 +169,7 @@ export default function Upload() {
                                 <img 
                                     className="absolute right-4 bottom-6 z-20" 
                                     width="90" 
-                                    src="/images/tiktok-logo-white.png"
+                                    
                                 />
                                 <video 
                                     autoPlay
