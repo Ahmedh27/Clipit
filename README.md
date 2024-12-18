@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Ahmedh27/Clipit">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">ClipIt: A Minimalist Short-Form Video Sharing Platform</h3>
@@ -63,12 +63,12 @@ ClipIt is a minimalist short-form video sharing platform designed to provide a d
 
 ### Built With
 
-* React with Tailwind CSS for the frontend
-* Node.js with Express for backend services
-* PostgreSQL for database management
-* Cloudinary API for video uploads and storage
-* Laravel Sanctum for authentication
-* Docker and AWS for scalable deployment
+
+* **Frontend:** Next.js 13, React, Tailwind CSS
+* **State Management:** Zustand
+* **Backend & Storage:** AppWrite
+* **Deployment:** Vercel
+* **Authentication:** GitHub OAuth API
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -132,17 +132,6 @@ For more details, refer to the Documentation.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Add filtering options for tags and trends
-- [ ] Improve backend scalability
-- [ ] Enhance video editing capabilities
-- [ ] Refine the user interface for better UX
-
-See the [open issues](https://github.com/Ahmedh27/Clipit/issues) for a full list of proposed features and known issues.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- TEAM -->
 ## Team
